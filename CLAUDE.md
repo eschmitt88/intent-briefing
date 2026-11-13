@@ -5,7 +5,12 @@ principles; this file refines them for this project.
 
 ## What this project is about
 
-One or two sentences. Fill in when the project stops being exploratory.
+How to instruct strong models in agentic systems: when does an **intent-level
+brief** (goal, constraints, rationale, context) beat a **step-by-step script**,
+and where does that stop being true? The research exists to change
+`~/claude-system` (skills, hooks, rules, subagent briefs, max-agency runs) and
+to be the live reference those pieces are refined against.
+Plan + questions: `docs/research-plan.md`. Scope: `docs/decisions/0001-*`.
 
 ## Layout (see user CLAUDE.md for the full rationale)
 
@@ -26,10 +31,17 @@ touch matching paths:
 @.claude/rules/notebooks.md
 @.claude/rules/data.md
 
-Framework rules live at `~/claude-system/claude/rules/`. They cannot be
-`@`-imported — CLAUDE.md imports resolve only inside the project tree —
-so read them at the point they apply: `evaluation.md` before designing
-or judging an evaluation, `agency.md` before an autonomous run.
+Framework rules in `~/claude-system/claude/rules/` can't be `@`-imported
+(imports resolve only in-tree): read `evaluation.md` before designing or
+judging an evaluation, `agency.md` before an autonomous run. Skills with
+`respects:` do this automatically. Evaluation mode: **HCE** — a prompting
+harness overfits to its own judge; outcome metrics, held-out tasks.
+
+## Inherited architecture
+Read these by path before relying on them (they don't auto-load):
+- ~/projects/research/agentic-research/concepts/intent-level-briefing.md
+- ~/projects/research/agentic-research/concepts/constraint-pinning.md
+- ~/projects/research/agentic-research/concepts/typed-enforcement.md
 
 ## Budget & compute
 
@@ -45,7 +57,13 @@ down or explicitly flag the need to raise a ceiling.
 
 ## Project-specific facts
 
-- Primary language: (fill in)
+- Primary language: Python (harness); briefs and prompts as Markdown.
+- LLM access: `claude -p` on the subscription, never a raw API key; pin
+  `--model` in unattended jobs; run from a neutral cwd outside any project.
+- Public repo: anything quoted from this box's prompts, logs or skills goes
+  through redaction first (no hostnames, IPs, private-project names).
+- Results flow to claude-system only via agentic-research `/elevate` →
+  `docs/system-proposals/`. Predecessor: `2026-07-31-instruction-ablation-program`.
 - Environment: managed by `uv`; run `make env` to sync.
 - Data: tracked by DVC. Large artifacts on SN850X via `~/projects/`.
 

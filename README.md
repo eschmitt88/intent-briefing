@@ -1,9 +1,8 @@
 # intent-briefing
 
-**One-line description of what this project investigates.** _(Fill in when the
-project stops being exploratory — this line is the repo's tagline on GitHub.)_
+**Brief, don't script: when should agentic systems give strong models intent instead of procedure, and where does that stop working?**
 
-📂 **[Browse this repo →](https://<owner>.github.io/intent-briefing/)** —
+📂 **[Browse this repo →](https://eschmitt88.github.io/intent-briefing/)** —
 interactive, always-live view of experiments, concepts, literature, and maps of
 content. Served via GitHub Pages from `docs/index.html`; reads the live file
 tree, no build step. _(Link is live once the repo is public and Pages is enabled
@@ -11,8 +10,15 @@ tree, no build step. _(Link is live once the repo is public and Pages is enabled
 
 ## What this is
 
-A paragraph on the question, the data, and what success looks like. Keep it
-oriented at a visitor who has never seen the repo.
+People and models designing agentic systems tend to write step-by-step
+scripts for readers that are as capable as the author, or more. This project
+tests the alternative, an **intent-level brief** (goal, hard constraints,
+rationale, transferred context), against scripts across model strengths,
+instruction classes and task horizons. The aim is to find the boundary, not
+to confirm the hunch. Success means a measured, evidence-graded writing guide
+for system prompts, subagent briefs and skills, and accepted changes to the
+[claude-system](https://github.com/eschmitt88/claude-system) harness it
+builds on. Plan: [`docs/research-plan.md`](docs/research-plan.md).
 
 ## How it's organized
 
