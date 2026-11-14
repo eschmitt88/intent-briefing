@@ -5,6 +5,7 @@ discovered: 2026-11-13
 source: discover
 n_requested: 12
 n_returned: 12
+curated: 2026-11-14
 ---
 
 Sweep scope: (A) human delegation and mission-command doctrine as tested
@@ -104,3 +105,20 @@ question 5 may be genuinely open; treat that as a finding, not a search failure.
 ---
 
 Considered, not included: Suzgun & Kalai meta-prompting (arXiv 2401.12954; conductor/expert design, no author-bias analysis); Ambig-SWE (arXiv 2502.13069) and "Ask or Assume?" (arXiv 2603.26233) on agents failing to detect underspecification (likely better under the sibling reader-side sweep); practitioner delegation guides (no empirical content).
+
+## Curation
+
+Curated 2026-11-14 by `/curate` (agency: max). Each item was checked against the full text; per-note discrepancies vs the summaries above are recorded in the literature notes.
+
+- 1. Shattuck & Woods 2000 — declined — the Springer chapter is paywalled (closed access); the only open copy is an unofficial Scribd upload, not used. A secondary reproduction (Shattuck, "Communicating Intent and Imparting Presence", on coloradofirecamp.com, venue unverified) reports 11/32 episodes (34%) matched intent; ingest that if its venue can be confirmed.
+- 2. Anthropic multi-agent research system — ingested → hadfield2025multiagent
+- 3. Intelligent AI Delegation (2602.11865) — ingested → tomasev2026intelligent
+- 4. MAST (2503.13657) — ingested → cemri2025why
+- 5. What Prompts Don't Say (2505.13360) — ingested → yang2025what
+- 6. Interpreting Commander's Intent (DTIC ADA481530) — ingested → thomas2007interpreting
+- 7. Klein et al. 2004, Ten Challenges — declined — position paper with no measurements; its common-ground/directability framing is covered by measured handoff sources (wang2026facts, kc2026handoff).
+- 8. Yukl & Fu 1999 — declined — tangential: a 1999 survey of what drives managers to delegate; the capability/trust analogy tests nothing about instruction design.
+- 9. Vandergriff, When Mission Command Fails — declined — secondary blog; its load-bearing claim (a 2025 NATO study of how officers read doctrine) should be found and ingested from the primary source.
+- 10. GRACE (2509.23387) — ingested → shi2025loss
+- 11. Gong & Wen (2605.26655) — ingested → gong2026prompt
+- 12. SAGE (2606.18902) + ESPO (2609.04197) — ingested → zhu2026sage, liu2026espo
