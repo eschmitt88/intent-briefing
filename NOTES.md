@@ -91,3 +91,16 @@ SessionEnd hook backstops this if you forget.
 - Finding from that review that belongs in the guide's evidence once a
   source backs it: restated contracts drift. Six skill contradictions were
   all two copies of one rule that had diverged. In-house only so far.
+
+### Later still: the trim, and two things the tests showed
+
+- claude-system's instruction text went from 18.6k to 9.8k words by keeping
+  machine-read contracts, non-default behaviour and reasons (record in
+  agentic-research, same file as above). Six trimmed skills were run on
+  Sonnet and checked by script; all conformed.
+- Observation for P2, in-house only: a format the reader cannot ground gets
+  dropped or invented. Log lines asked for a clock time; one run omitted
+  it and one estimated it.
+- Observation for P6: the corpus had regrown to its pre-ablation size
+  through accepted proposals, one paragraph at a time. `/elevate` now has
+  a text budget.
