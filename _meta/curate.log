@@ -1,0 +1,68 @@
+Waiting on the subagents to finish.
+
+Batch 3 is in: the multi-agent and context-engineering posts are ingested. Waiting on the other 6 batches.
+
+Batches 3 and 7 are done. Batch 7 found 2 claims the guide relies on that don't hold up (P3 and P6). Waiting on the other 5 batches.
+
+Batch 4 is done; 3 of 7 batches are complete. Waiting on batches 1, 2, 5 and 6.
+
+Batch 7 found one more citation count; nothing else changed. Still waiting on batches 1, 2, 5 and 6.
+
+Batch 2 is done, so 4 of 7 batches are complete. One finding from it: the 41% figure in guide principle 2 measures something other than what the line says, so that line will be rewritten. Waiting on batches 1, 5 and 6.
+
+Batch 6 is done, so 5 of 7 batches are complete. Waiting on batch 1 (delegation and authorship) and batch 5 (scaffolding papers).
+
+Batch 5's notes are all on disk. Waiting for its final report before I write the concept files.
+
+I ran `/curate` on all 4 candidate files. They're archived to `raw/_candidates/_done/`, every item has a recorded disposition, and the work is pushed in 6 commits. The headroom verdict was GO/high throughout.
+
+**Dispositions (48 items)**
+- **39 ingested, as 40 literature notes** (SAGE and ESPO each got their own note). Each was read against the full text, with trust signals filled in.
+- **5 declined:**
+  - Shattuck & Woods 2000: paywalled, no open copy.
+  - Klein et al. 2004: a position paper with no measurements.
+  - Yukl & Fu 1999: tangential.
+  - Vandergriff's blog post: secondary.
+  - The Latent Space / O'Reilly write-ups: unverified secondary claims.
+- **4 duplicates across files**, recorded as "already in graph".
+- For the Harness-Zero item, I found and ingested the original paper (arXiv 2609.24974) instead of the Arize blog.
+
+**Founding claims that didn't survive the full texts.** The guide quoted these, so I rewrote the lines (`docs/writing-guide.md`, and Q2/Q5 in `docs/research-plan.md`):
+- **P2:** the "~41% of unstated requirements guessed right" figure measures something else. The finding is that an unstated requirement loses ~22.6% accuracy (conditional requirements are met unprompted only 22.9% of the time), and stating everything also costs. The line now reads: state what the reader won't do by default, and leave out what it will.
+- **P4:** "the strongest model gained most from scaffolding" holds only within Anthropic models, at GAIA Level 2, on one slice. GPT-5.5, which had the highest baseline, gained least. The guide also cited 2604.27891 as support for keeping structure, which that paper doesn't show. The line now says procedural scaffolding gets absorbed as models improve, while structure that carries knowledge, verification or enforcement keeps paying.
+- **P6:** in the current version of the AGENTS.md paper, the harm from LLM-written files is not statistically significant, and the human-vs-LLM comparison isn't controlled. The cause looks like repeating documentation the agent can already find, not who wrote the file.
+- **P3:** the chain-of-thought citation was overstated, but runtime enforcement and typed allowlists now support it well. For example, prompt-only policies were attacked successfully 5/5 times, against 0/5 when enforced at runtime.
+- **Other bad data:** 2510.22251 ("Prompting Inversion") has integrity problems, including case-study IDs that aren't in GSM8K and a model name that never existed. I gave it credibility 1.
+
+**Evidence tags now:** P2, P3 and P5 are `[strong]`; P1, P4 and P6 are `[moderate]`. No line is `[provisional]` any more.
+
+**Graph changes**
+- 13 new concept files.
+- One MoC, `mocs/brief-writing.md`. A second candidate, harness structure, was declined because it has only 3 core concepts.
+- `kg_lint` is clean except an old placeholder link in `README.md`.
+
+**Things to know**
+- The 13 MB HORIZON PDF is tracked by DVC as the size rule requires, but no DVC remote is configured, so that file exists only in the local cache.
+- A subagent created a `.venv`; it's gitignored and I left it.
+- I didn't touch the untracked, empty `_meta/curate.log`.
+- The biggest gap is unchanged: no study compares a goal-only brief with a procedural brief at equal requirement coverage on agentic tasks.
+- Follow-ups the subagents flagged:
+  - OpenAI's GPT-6 guide, which now sits at the old GPT-5.5 URL and says the model is more sensitive to `AGENTS.md` and skills.
+  - Anthropic's per-model prompting pages.
+  - The secondary Shattuck text.
+  - The 2025 NATO doctrine study.
+
+`NOTES.md` isn't updated yet; that's left to `/wrap` or the SessionEnd hook.
+I didn't create a new MoC because nothing is ripe. The concept set hasn't changed since the last promotion (`e0297ae`, which created `mocs/brief-writing`), and that MoC already maps 7 of the 13 concepts.
+
+The other 6 concepts don't share one theme, so none of them make a group of 5:
+- **Harness/enforcement:** `scaffold-absorption`, `durable-structure`, `invariants-in-code`. That's 3, the same group the last run turned down.
+- **Delegation/handoff:** `handoff-context-loss`, `commanders-intent`. Its closest third member, `brief-anatomy`, is already in `brief-writing`.
+- **Unaffiliated:** `cross-model-prompt-transfer`.
+
+The skill's rule for an unchanged graph says to log one line and not commit, so I added this to `_meta/log.md`:
+`2026-11-14 promote-moc declined (graph unchanged since e0297ae, 7/13 concepts mapped)`
+
+That change is still uncommitted and will go in with the next commit. I left `_meta/curate.log`, which was already untracked before this run, alone.
+
+The harness/enforcement group is the likeliest next MoC, once more ingests add two concepts to it.
