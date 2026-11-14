@@ -61,3 +61,6 @@ jobs:
                   fail = True
           sys.exit(1 if fail else 0)
           PY
+
+      - name: Check writing guide consistency
+        run: python scripts/check_guide.py

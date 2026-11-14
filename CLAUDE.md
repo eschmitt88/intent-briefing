@@ -65,9 +65,11 @@ down or explicitly flag the need to raise a ceiling.
 
 ## Keeping the guide live
 
-When an ingest bears on a line in `docs/writing-guide.md`, update that line's
-evidence tag and citations in the same commit. Contradicting evidence
-rewrites the line; don't keep both versions.
+When an ingest bears on a principle in `docs/writing-guide.md`, update its
+evidence entry and its one-line rule in the same commit. Contradicting
+evidence rewrites the principle; don't keep both versions. P-numbers are
+stable IDs: add new ones at the end, never renumber. Run
+`python3 scripts/check_guide.py` before committing (CI runs it too).
 
 ## Housekeeping
 

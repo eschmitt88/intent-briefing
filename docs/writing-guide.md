@@ -6,24 +6,52 @@ updated: "2026-11-14"
 
 # Writing instructions for strong models
 
-This is the live reference for claude-system skills, rules, hooks, system
-prompts and subagent briefs. Every line carries an evidence tag and cites the
-notes behind it. When a curated source moves a line's strength, update the
-tag. When evidence contradicts a line, rewrite or delete it. Don't keep both
-versions.
+The reference for writing claude-system skills, rules, hooks, system prompts
+and subagent briefs. **Writing something? Use [The rules](#the-rules).**
+[Evidence](#evidence) is for checking or updating a rule; its numbers are
+stable IDs that literature notes cite. Maintenance rules live in this repo's
+`CLAUDE.md`.
 
-**Evidence tags**
-- `[strong]`: passes `/elevate` Gate 1 (peer-reviewed, code released, or ≥3
-  independent attestations at credibility ≥3).
-- `[moderate]`: one credible controlled study, or consistent vendor guidance
-  plus one study.
-- `[weak]`: practitioner reports, single small studies.
-- `[provisional]`: from discovery snippets, not yet ingested. Verify before
-  relying on it.
-- `[in-house]`: a de-identified observation from the private system audit.
-  Not literature.
+## The rules
 
-## Principles
+1. **P2: State what the reader won't do by default; leave out what it will.**
+   Conditional requirements, corner cases, output format, and anything you
+   know that it can't discover. `[strong]`
+2. **P3: Put hard invariants in code, not prose.** Use hooks, typed fields
+   and permission gates. Prose of either style leaks. `[strong]`
+3. **P5: Hand over context, not just a task.** Include what you've found,
+   what's ruled out, and where to look. Write rules as explicit imperatives,
+   because soft phrasing gets lost in handoff. When the reader continues
+   your work, give it the trace, not a summary. `[strong]`
+4. **P1: Give the outcome, success criteria, stopping rule, and constraints
+   with their reasons. Leave the method to the reader.** Spell out steps only
+   where the order is itself a requirement. `[moderate]`
+5. **P4: Keep structure that carries knowledge, tools, verification or
+   enforcement; expect procedure to be absorbed.** Re-check both on every
+   model change. `[moderate]`
+6. **P6: Don't restate what the reader can discover, and don't trust
+   model-written instructions untested.** Accreting rules after failures
+   adds cost without gains. `[moderate]`
+7. **P7: The weaker or cheaper the reader, the more explicit the
+   structure.** This matters here because many subagents run on Sonnet or
+   Haiku. `[weak]`
+
+**Evidence tags.** `[strong]` passes `/elevate` Gate 1 (peer-reviewed, code
+released, or ≥3 independent attestations at credibility ≥3). `[moderate]` is
+one credible controlled study, or vendor guidance plus a study. `[weak]` is
+practitioner reports or single small studies. `[provisional]` is not yet
+ingested. `[in-house]` is a de-identified observation from the private
+system audit, not literature.
+
+## This guide's own standing
+
+The guide is model-written and has not been tested against held-out tasks,
+which is what P6 asks for. Its evidence comes from literature, not from
+checking the guide itself. The partial check available here is in-house:
+whether briefs written after the guide meet their goals more often in the
+private audit. Until then, treat it as a well-sourced hypothesis.
+
+## Evidence
 
 1. **Brief, don't script, for procedure the reader can work out.** State the
    outcome, the success criteria, the stopping rule, the hard constraints and
@@ -110,6 +138,17 @@ versions.
      ([[literature/papers/zhu2026sage]], [[literature/papers/liu2026espo]]).
    - Inside a held-out eval loop, LLM-rewritten tool servers beat
      human-written ones ([[literature/posts/aizawa2025writing]]).
+7. **Give weaker or cheaper readers more explicit structure.** `[weak]`:
+   - Rule-heavy constraints helped a mid-tier model and hurt a frontier one
+     ([[literature/papers/khan2025prompting]], cred 1, direction only).
+   - Exemplars hurt a reasoning-specialised small model but still helped a
+     general one ([[literature/papers/pushkin2026soft]]).
+   - CoT prompting helps non-reasoning models a little and reasoning models
+     ≤3 pp or negatively ([[literature/papers/meincke2025prompting]]).
+   - A strong model writing a deterministic harness for a weak one is the
+     extreme case (P3, P4).
+   - The flip point is unmeasured and model-family-dependent (research-plan
+     Q2).
 
 ## Open questions
 
