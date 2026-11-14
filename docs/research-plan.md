@@ -35,6 +35,10 @@ availability is a variable to test, not a fixed background.
 
 ## Founding questions
 
+> **Order and evaluation method revised by [ADR 0002](decisions/0002-decision-grade-evaluation.md):**
+> Q5 → Q3 → Q1 → Q2; Q4 demoted; Q6 is now a case study. Real tasks only, cheap
+> probes before replays, and a decision-grade promotion gate instead of factorial significance.
+
 1. **Effect size.** On matched tasks, does an intent brief match or beat a
    script for a frontier implementer? Measure outcome quality, tokens and
    turns.

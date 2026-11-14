@@ -24,8 +24,8 @@ agency: max
 # "claude-opus-4-8") for a specific role if you need reproducibility, or drop
 # to "haiku"/"sonnet" for a cheaper implementer.
 models:
-  ideator: "opus"
-  implementer: "opus"
+  ideator: "claude-opus-5-5"   # pinned per ADR 0002
+  implementer: "claude-opus-5-5"   # pinned per ADR 0002
 
 # Hardware hints (read by /implement, surfaced to the subagent).
 # Edit every value to match your machine — these are placeholders.
