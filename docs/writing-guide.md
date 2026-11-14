@@ -51,6 +51,14 @@ checking the guide itself. The partial check available here is in-house:
 whether briefs written after the guide meet their goals more often in the
 private audit. Until then, treat it as a well-sourced hypothesis.
 
+## Where it is applied
+
+Since 2026-11-14 the four rules a writer most needs (P2, P1, P3, P7) are
+stated in claude-system's global `CLAUDE.md`, which points back here for
+the evidence and the rest. The same review rewrote claude-system's skills
+against this guide; the record is in agentic-research
+`docs/system-proposals/2026-11-14-system-review-intent-briefing.md`.
+
 ## Evidence
 
 1. **Brief, don't script, for procedure the reader can work out.** State the

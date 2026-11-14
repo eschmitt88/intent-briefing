@@ -57,3 +57,4 @@ skills; read by `/lint`.
 2026-11-14 20:38 promote-moc brief-writing (7 concepts); harness-structure declined (3 core concepts)
 2026-11-14 promote-moc declined (graph unchanged since e0297ae, 7/13 concepts mapped)
 2026-11-14 writing guide self-applied: rules block first, P7 weaker readers [weak], own-standing note; scripts/check_guide.py + CI
+2026-11-14 guide folded into claude-system CLAUDE.md; 'Where it is applied' section

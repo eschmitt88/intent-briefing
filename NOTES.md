@@ -80,3 +80,14 @@ SessionEnd hook backstops this if you forget.
 - Overnight curate ingests the 48 candidates. Re-tag guide lines as
   sources are verified.
 - Author-bias audit lives in a separate private QA repo (manual trigger).
+
+### Later the same day: guide folded into claude-system
+
+- The guide now leads with a rules block; P7 added; `scripts/check_guide.py`
+  guards the duplicated evidence tags in CI.
+- claude-system reviewed and updated against the guide (record:
+  agentic-research `docs/system-proposals/2026-11-14-system-review-intent-briefing.md`).
+  Its global `CLAUDE.md` carries P2, P1, P3 and P7 and points here.
+- Finding from that review that belongs in the guide's evidence once a
+  source backs it: restated contracts drift. Six skill contradictions were
+  all two copies of one rule that had diverged. In-house only so far.
