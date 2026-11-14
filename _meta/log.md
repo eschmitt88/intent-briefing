@@ -41,3 +41,15 @@ skills; read by `/lint`.
 2026-11-14 20:36 ingest raw/papers/wang2026longhorizon.pdf → literature/papers/wang2026longhorizon.md
 2026-11-14 20:36 ingest raw/papers/barbaste2026harness.pdf → literature/papers/barbaste2026harness.md
 2026-11-14 20:36 curate 2026-11-13-scaffolding-bitter-lesson.md ingested=11 declined=1 dup=0
+2026-11-14 20:36 ingest raw/papers/khan2025prompting.pdf → literature/papers/khan2025prompting.md
+2026-11-14 20:36 ingest raw/papers/pushkin2026soft.pdf → literature/papers/pushkin2026soft.md
+2026-11-14 20:36 ingest raw/papers/meincke2025prompting.pdf → literature/papers/meincke2025prompting.md
+2026-11-14 20:36 ingest raw/papers/wang2025harm.pdf → literature/papers/wang2025harm.md
+2026-11-14 20:36 ingest raw/papers/zheng2025curse.pdf → literature/papers/zheng2025curse.md
+2026-11-14 20:36 ingest raw/papers/li2025thinking.pdf → literature/papers/li2025thinking.md
+2026-11-14 20:36 ingest raw/papers/harada2025instructions.pdf → literature/papers/harada2025instructions.md
+2026-11-14 20:36 ingest raw/papers/jaroslawicz2025instructions.pdf → literature/papers/jaroslawicz2025instructions.md
+2026-11-14 20:36 ingest raw/papers/gloaguen2026evaluating.pdf → literature/papers/gloaguen2026evaluating.md
+2026-11-14 20:36 ingest raw/web/developers.openai.com-latest-model-gpt-5.5.md → literature/posts/openai2026gpt55.md
+2026-11-14 20:36 ingest raw/web/platform.claude.com-claude-prompting-best-practices.md → literature/posts/anthropic2026prompting.md
+2026-11-14 20:36 curate 2026-11-13-specificity-prompt-density-capability.md ingested=11 declined=0 dup=1

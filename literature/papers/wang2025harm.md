@@ -1,0 +1,152 @@
+---
+kind: paper
+title: "From Harm to Help: Turning Reasoning In-Context Demos into Assets for Reasoning LMs"
+authors: ["Haonan Wang", "Weida Liang", "Zihang Fu", "Nie Zheng", "Yifan Zhang", "Yao Tong", "Tongyao Zhu", "Hao Jiang", "Chuang Li", "Jiaying Wu", "Kenji Kawaguchi"]
+institutions: ["National University of Singapore", "MiroMind AI", "University of Sydney"]
+year: 2025
+venue: "arXiv preprint (v1, 2025-09-27); Semantic Scholar tags it EMNLP 2025, unconfirmed (no venue on the PDF; DBLP lists CoRR only)"
+peer_reviewed: unknown
+url: "https://arxiv.org/abs/2509.23196"
+code_url: null
+citations: 1
+source: "raw/papers/wang2025harm.pdf"
+added: "2026-11-14"
+relevance: 4
+credibility: 2
+status: read
+related_experiments: []
+related_concepts: ["[[concepts/guidance-distraction]]", "[[concepts/degrees-of-freedom]]", "[[concepts/scaffold-absorption]]"]
+tags: [in-context-learning, few-shot, reasoning-models, rlvr, test-time-scaling, demonstrations, aime, gpqa]
+---
+
+# From Harm to Help: Turning Reasoning In-Context Demos into Assets for Reasoning LMs
+
+## TL;DR
+
+The paper prepends retrieved, closely matched DeepSeek-R1 reasoning traces to
+small open reasoning models (Qwen3 1.7B–8B, R1-Distill 7B/32B). Accuracy
+falls relative to no demos, and falls further with more shots. The authors
+find two mechanisms: surface-similarity copying, and failure to transfer the
+strategy. Their fix, I2S, has the model write a comparison and "insights"
+from the demo, withholds the raw trace, and solves from the insights. I2S
+beats direct answering but uses 3+ calls. Against compute-matched baselines
+its edge is small or absent.
+
+## Claims
+
+- Few-shot reasoning demos hurt reasoning LMs "even when demonstrations are
+  optimal" (§3.1, Fig. 1):
+  - AIME'25: 1-shot drops of about 6–16 pp, 3-shot drops of up to 35 pp.
+  - GPQA-D: 1–5 pp at 1-shot, 4–8 pp at 3-shot.
+- Mechanisms (§3.3):
+  - **semantic misleading**: lexical overlap makes the model treat the
+    target as the demo problem and copy its steps;
+  - **strategy-transfer failure**: the model fails to extract and apply the
+    useful structure.
+- I2S/I2S+ "consistently outperform both direct answering and test-time
+  scaling baselines".
+- Abstract: "on AIME'25, GPT-4.1 rises by +14.0%, and o1-mini improves by
+  +2.7% on AIME and +1.7% on GPQA".
+
+## Methods
+
+- **Diagnosis:** demos are retrieved from OpenThoughts-114k by question
+  embedding (all-mpnet-base-v2, FAISS) and evaluated on AIME 2025 (30
+  problems) and GPQA Diamond (198).
+- **Two-step fix:** elicit a trace with demos present, drop the demos, then
+  answer from question + trace (Fig. 4).
+- **I2S pipeline (§4):**
+  - compare the demo question with the target;
+  - extract transferable "insights" from the demo CoT (Teacher prompt, C.6);
+  - generate the target reasoning from question + insights, with the demo
+    CoT withheld. The demo *question* and the comparison remain in context
+    (C.3).
+  - I2S+ adds suggest / review / refine loops.
+- **Main evaluation:** R1-Distill-Qwen-7B/14B, Qwen3-1.7B, GPT-4.1 and
+  o1-mini. Baselines are Direct, Self-Refine (best of 4 rounds), Progressive-
+  Hint (best of 3 retries), and Maj@3 / Maj@32. 5 runs averaged,
+  temperature 0.5.
+- **Open-ended "General Reasoning"** (500 problems): graded by a GPT-4.1
+  judge against GPT-4.1-written references.
+
+## Results
+
+**AIME'25, accuracy % (Table 1):**
+
+| Model | Direct | SR | PHP | I2S | I2S+ |
+|---|---|---|---|---|---|
+| R1-Distill-7B | 42.0 | 45.3 | 43.3 | 48.0 | 51.3 |
+| R1-Distill-14B | 50.0 | 56.7 | **58.0** | 54.0 | 60.0 |
+| Qwen3-1.7B | 36.0 | 34.7 | 37.3 | 41.3 | 42.7 |
+
+**GPQA, accuracy % (Table 1):**
+
+| Model | Direct | SR | PHP | I2S | I2S+ |
+|---|---|---|---|---|---|
+| 7B | 51.3 | **54.1** | 53.4 | 53.3 | 55.2 |
+| 14B | 59.5 | **60.7** | 60.4 | 59.6 | 63.0 |
+| 1.7B | 39.0 | 40.6 | **41.6** | 40.3 | 42.4 |
+
+- Plain I2S (the "insights" method itself) is beaten by a demo-free
+  sequential baseline in 4 of 6 cells (the bold entries).
+- **Compute-matched baselines (Table 3):**
+  - I2S vs Maj@3: +1.3 to +2.7 on AIME, +0.1 to +0.2 on GPQA.
+  - I2S+ vs Maj@32: Maj@32 is higher on AIME for all three models. On GPQA
+    the result is mixed.
+- **Two-step decoupling** recovers +0.3 to +4.8 over naive 1-shot but stays
+  below Direct (Fig. 4).
+- **GPT models** appear only in Fig. 2, with no table:
+  - GPT-4.1 AIME 34.0 → 48.0 with I2S, plus a "modest" GPQA gain;
+  - o1-mini +2.7 AIME / +1.7 GPQA.
+  - No few-shot baseline is reported for either.
+
+## Critique / open questions
+
+- **Discrepancies with the candidate summary:**
+  - (a) The "demos hurt RLVR reasoning models" result is shown only on small
+    open models (≤32B, Qwen3 and R1-distilled). It is never shown on GPT-4.1
+    or o1-mini.
+  - (b) GPT-4.1 is **not** an RLVR reasoning model. Its +14.0 is percentage
+    points vs *direct answering*, not a recovery from a few-shot loss.
+    AIME'25 has 30 problems, so +14 pp is about 4 problems per run.
+  - (c) The "abstract insights" are generated by the model at test time, per
+    problem, from a retrieved demo. They are not author-written distilled
+    guidance.
+- **No ablation isolating insight vs compute.** Nothing compares "same
+  pipeline without the demo" against "with the demo". Gains over Direct are
+  confounded with 3+ extra model calls, and compute-matched voting erases
+  most of them. The evidence that *abstraction rather than extra inference*
+  helps is weak.
+- **Copying mechanism:** the evidence is qualitative case studies (Fig. 3,
+  App. B.3) with no frequency counts.
+- **Inconsistencies:** §3.1 lists the models as "Qwen3 1.5B, 3B, 8B", but
+  Fig. 1 shows 1.7B/4B/8B. The open-ended results use an LLM judge; the
+  closed-ended ones are task outcomes.
+- **2×2:** literal worked demos are *verbose procedure by example*. The I2S
+  insight stage turns them into something closer to *terse strategy hints*.
+  It is still procedure-flavoured ("useful ideas or strategies"), not goal or
+  rationale. Shared doctrine is not applicable.
+
+## Trust signals
+
+- **Credibility:** 2. NUS (Kawaguchi) plus collaborators. The venue is
+  unconfirmed (Semantic Scholar says EMNLP 2025; the PDF and DBLP don't), and
+  no code is released. Closed-ended metrics are verifiable task outcomes. But
+  the harm result covers small models only, AIME has n=30, there is no
+  insight-vs-compute ablation, and the headline GPT figures appear only in a
+  chart. Semantic Scholar showed 1 citation on 2026-11-14.
+
+## Follow-up
+
+- **Relevance:** 4. It is the source behind Guide P1's evidence clause and
+  the most direct study here of literal vs abstracted guidance for reasoning
+  models.
+- **Guide:** P1 refines — the first half holds, narrowly: retrieved literal
+  worked traces hurt *small open* reasoning models, with large drops on
+  AIME and growing with shot count, via copying. The second half ("abstracted
+  insights help") is not cleanly shown. I2S's gains over direct are mostly
+  matched by compute-equal sampling, and plain I2S trails demo-free
+  self-refine or hint baselines in 4/6 cells. The GPT-4.1 +14 pp is vs
+  direct, on a non-reasoning model. Suggested tag: keep `[weak]` for the
+  "abstracted insights help" clause. Cite it for "literal demos can hurt"
+  only with the small-model caveat.

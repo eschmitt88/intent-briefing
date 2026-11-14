@@ -5,6 +5,7 @@ discovered: 2026-11-13
 source: discover
 n_requested: 12
 n_returned: 12
+curated: 2026-11-14
 ---
 
 Verification note: items 2, 4, 10, 11, 12 were checked against the primary page
@@ -95,3 +96,20 @@ set. Items 11-12 are vendor docs, not controlled studies.
 - type: post
 - summary: Advises giving the reason behind instructions, "prefer general instructions over prescriptive steps" because Claude's reasoning often exceeds a hand-written plan, softening CRITICAL/MUST emphasis that now over-triggers, and removing over-prompting added for weaker models.
 - reason: The implementer-side vendor guidance for our actual reader; also contains the counterweight that newer models read instructions more literally and need explicit direction for things like tool use and subagent behavior, which belongs in our invariant-boundary list.
+
+## Curation
+
+Curated 2026-11-14 by `/curate` (agency: max). Each item was checked against the full text; per-note discrepancies vs the summaries above are recorded in the literature notes.
+
+- 1. The Prompting Inversion (2510.22251) — ingested → khan2025prompting (credibility 1: integrity problems; anecdote only)
+- 2. Soft Guidance (2608.03550) — ingested → pushkin2026soft
+- 3. Prompting Science Report 2 (2506.07142) — ingested → meincke2025prompting
+- 4. From Harm to Help (2509.23196) — ingested → wang2025harm
+- 5. The Curse of CoT (2504.05081) — ingested → zheng2025curse
+- 6. When Thinking Fails (2505.11423) — ingested → li2025thinking
+- 7. ManyIFEval (2509.21051, titled "When Instructions Multiply" on arXiv) — ingested → harada2025instructions
+- 8. IFScale (2507.11538) — ingested → jaroslawicz2025instructions
+- 9. What Prompts Don't Say (2505.13360) — already in graph (yang2025what)
+- 10. Evaluating AGENTS.md (2602.11988) — ingested → gloaguen2026evaluating
+- 11. OpenAI GPT-5.5 prompting guide — ingested → openai2026gpt55 (old URL now redirects to the GPT-6 guide)
+- 12. Anthropic prompting best practices — ingested → anthropic2026prompting
