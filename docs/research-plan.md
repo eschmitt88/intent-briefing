@@ -41,15 +41,21 @@ source, ask whether shared doctrine was available.
    turns? *Gap as of 2026-11-13: no controlled goal-vs-procedure study on
    agentic tasks.*
 2. **Capability boundary.** At what implementer strength does the ordering
-   flip? *Counter-evidence already in hand: the strongest model gained the
-   most from scaffolding (2606.08529).*
+   flip? *As of 2026-11-14 the evidence is mixed and family-dependent.
+   Structured scaffolds helped Anthropic models most on GAIA L2, but the
+   highest-baseline model, GPT-5.5, gained least (2606.08529). Procedural
+   harness gains shrink with capability (Harness-Zero, 2610.22289), while
+   knowledge-carrying structure keeps paying.*
 3. **Invariant boundary.** Which instruction classes must stay explicit (or
    move to code) no matter how strong the model is?
 4. **Horizon and drift.** Does intent framing drift more or less than a
    script over long autonomous runs? *Gap: no long-horizon procedure-vs-intent
    comparison.*
 5. **Author bias.** Do frontier models over-script when they write briefs for
-   peers? *The literature is indirect here (AGENTS.md evaluation 2602.11988).
+   peers? *Still indirect as of 2026-11-14. The AGENTS.md effect is not
+   significant once redundancy with repo docs is accounted for (2602.11988).
+   Optimizer loops accumulate rules (SAGE, ESPO). Orchestrators and builders
+   were seen to under-specify, not over-script.
    Our own author is audited separately, in a private repo; see ADR 0003.*
 
 The 2026-07-31 instruction-ablation program is a **qualitative case study**

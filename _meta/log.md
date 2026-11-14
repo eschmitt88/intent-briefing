@@ -53,3 +53,4 @@ skills; read by `/lint`.
 2026-11-14 20:36 ingest raw/web/developers.openai.com-latest-model-gpt-5.5.md → literature/posts/openai2026gpt55.md
 2026-11-14 20:36 ingest raw/web/platform.claude.com-claude-prompting-best-practices.md → literature/posts/anthropic2026prompting.md
 2026-11-14 20:36 curate 2026-11-13-specificity-prompt-density-capability.md ingested=11 declined=0 dup=1
+2026-11-14 20:37 seed 13 concepts; writing-guide re-tagged from 40 ingested notes (P2,P3,P5 strong; P1,P4,P6 moderate; P2/P4/P6 rewritten); research-plan Q2/Q5 corrected

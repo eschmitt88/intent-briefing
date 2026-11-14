@@ -26,27 +26,90 @@ versions.
 ## Principles
 
 1. **Brief, don't script, for procedure the reader can work out.** State the
-   goal, the hard constraints and the reason for each. Leave the method to
-   the reader. `[provisional]`: Anthropic and OpenAI guidance; literal demos
-   hurt reasoning models while abstracted insights help (2509.23196).
-2. **Coverage beats brevity.** Write down the requirements you know but
-   would otherwise leave unsaid. Readers guess unstated requirements right
-   only ~41% of the time, and underspecified prompts regress ~2× across
-   model changes. `[provisional]`: 2505.13360.
+   outcome, the success criteria, the stopping rule, the hard constraints and
+   the reason for each. Leave the method to the reader. Keep explicit steps
+   only where the order or completeness of steps is itself a requirement.
+   `[moderate]`:
+   - Vendor guidance on both sides: [[literature/posts/openai2026gpt55]]
+     ("avoid step-by-step process guidance unless the exact path matters";
+     "define success criteria and stopping rules"),
+     [[literature/posts/anthropic2026prompting]] and
+     [[literature/posts/anthropic2026skill]].
+   - One study: a procedure-heavy evolved harness added ~0 for a frontier
+     model without training ([[literature/papers/ye2026harnesszero]]).
+   - Literal worked demos hurt *small* reasoning models. The
+     "abstracted insights help" result does not survive compute matching
+     ([[literature/papers/wang2025harm]], `[weak]`).
+   - No controlled study yet compares a goal-only brief with a procedural
+     brief on agentic tasks.
+2. **State what the reader won't do by default, and leave out what it will.**
+   Coverage of non-default requirements is the live axis, not length.
+   `[strong]`:
+   - An unstated requirement loses ~22.6% accuracy on average. Conditional
+     requirements are met unprompted only 22.9% of the time, format
+     requirements 70.7%.
+   - Unstated requirements regress about twice as often across model
+     updates (5.9% vs 3.0%) ([[literature/papers/yang2025what]]).
+   - Stating everything costs too. Joint compliance compounds small misses:
+     at 10 instructions, Claude 3.5 Sonnet satisfies all of them 48% of the
+     time, GPT-4o 21% ([[literature/papers/harada2025instructions]]).
+   - Blind length caps don't help; a diagnosed choice of what to state does
+     ([[literature/papers/liu2026espo]],
+     [[literature/papers/yang2025what]]).
+   - Put the critical constraints first
+     ([[literature/papers/jaroslawicz2025instructions]]).
 3. **Hard invariants go in code, not prose of either style.** Use hooks,
-   typed checks and permission gates. `[provisional]`: CoT lowers adherence
-   to simple hard constraints (2505.11423); hub `typed-enforcement`,
-   `constraint-pinning`.
-4. **Keep structure that carries knowledge or enforces rules.** Scaffolding
-   isn't automatically dead weight for strong models. In one pre-registered
-   study, the strongest model gained the most from it. `[provisional]`:
-   2606.08529, 2604.27891.
-5. **Hand over context, not just a task.** The reader matches the author in
-   capability, not in context. Some context must travel as full traces.
-   `[provisional]`: Anthropic multi-agent post; Cognition "Don't Build
-   Multi-Agents".
-6. **Be suspicious of LLM-written context files.** In one evaluation they
-   lowered task success and added >20% cost. `[provisional]`: 2602.11988.
+   typed fields, runtime policy checks and permission gates. Expect some
+   utility cost and measure it. `[strong]`:
+   - Prompt-only policies are attacked successfully 5/5 times, against 0/5
+     when enforced at runtime; utility can drop (83.7 → 62.5 on AgentDojo)
+     ([[literature/papers/palumbo2026formal]]).
+   - Rules lost in handoff: a typed audience allowlist leaked 0/48 times,
+     against 58/288 for prompt-only mitigation
+     ([[literature/papers/wang2026facts]]).
+   - A model-judged permission gate still misses 17% of real overeager
+     actions ([[literature/posts/hughes2026claude]]).
+   - Moving a rule from prose into a controller helped a frontier model
+     ([[literature/papers/rodionov2026improving]]).
+   - Hub `typed-enforcement` and `constraint-pinning`.
+4. **Expect procedural scaffolding to be absorbed. Keep structure that
+   carries knowledge, tools, verification or enforcement, and re-test both
+   on every model change.** `[moderate]`:
+   - A harness's procedure added ~0 for a frontier model; its domain
+     knowledge plus validation tool added +16
+     ([[literature/papers/ye2026harnesszero]]).
+   - Verification gave the largest multi-agent repair
+     ([[literature/papers/cemri2025why]]).
+   - Model-run planning and verifier loops help on GAIA L2, but the effect
+     depends on model family. "The strongest model gained most" holds only
+     within the Anthropic models, at L2, on one slice
+     ([[literature/papers/starace2026scaffold]]).
+   - Anthropic kept a planner and an evaluator across model generations and
+     dropped the rest ([[literature/posts/rajasekaran2026harness]]).
+5. **Hand over context, not just a task. Make rules travel as explicit
+   imperatives.** The reader matches the author in capability, not in
+   context. `[strong]`:
+   - Under compression, facts survive at ~0.98 but rules only at 0.53–0.69.
+     Soft phrasing ("use discretion") leaks
+     ([[literature/papers/wang2026facts]]).
+   - For a successor that must continue the same work, the raw trace was the
+     only consistent gain in solve rate (+6.1 to +14.9). Structured notes
+     didn't beat free-form ones ([[literature/papers/kc2026handoff]]).
+   - Aggregator nodes lose more than linear chains
+     ([[literature/papers/mazumder2026agentcollabbench]]).
+   - Coupled parallel writes need one thread, not better briefs
+     ([[literature/posts/yan2025multiagents]], `[weak]`).
+6. **Don't restate what the reader can discover. Gate model-written
+   instructions on a held-out eval.** `[moderate]`:
+   - Context files did not raise success and added ~20% cost.
+     Developer-written files beat LLM-generated ones by 4.2 points
+     (p=0.038), but that comparison is uncontrolled. With the repo docs
+     removed, the LLM files helped
+     ([[literature/papers/gloaguen2026evaluating]]).
+   - Iteration loops that patch failures accumulate rules without gains
+     ([[literature/papers/zhu2026sage]], [[literature/papers/liu2026espo]]).
+   - Inside a held-out eval loop, LLM-rewritten tool servers beat
+     human-written ones ([[literature/posts/aizawa2025writing]]).
 
 ## Open questions
 
