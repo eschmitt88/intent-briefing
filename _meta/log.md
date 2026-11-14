@@ -29,3 +29,15 @@ skills; read by `/lint`.
 2026-11-14 20:36 ingest raw/web/anthropic.com-writing-tools-for-agents.md → literature/posts/aizawa2025writing.md
 2026-11-14 20:36 ingest raw/web/platform.claude.com-agent-skills-best-practices.md → literature/posts/anthropic2026skill.md
 2026-11-14 20:36 curate 2026-11-13-delegation-subagent-briefing.md ingested=9 declined=0 dup=3
+2026-11-14 20:36 ingest raw/web/anthropic.com-harness-design-long-running-apps.md → literature/posts/rajasekaran2026harness.md
+2026-11-14 20:36 ingest raw/papers/dennis2026incontext.pdf → literature/papers/dennis2026incontext.md
+2026-11-14 20:36 ingest raw/papers/rodionov2026improving.pdf → literature/papers/rodionov2026improving.md
+2026-11-14 20:36 ingest raw/repos/SWE-agent-mini-swe-agent.md → literature/repos/SWE-agent-mini-swe-agent.md
+2026-11-14 20:36 ingest raw/papers/starace2026scaffold.pdf → literature/papers/starace2026scaffold.md
+2026-11-14 20:36 ingest raw/papers/ye2026harnesszero.pdf → literature/papers/ye2026harnesszero.md
+2026-11-14 20:36 ingest raw/papers/qian2026ai4ai.pdf → literature/papers/qian2026ai4ai.md
+2026-11-14 20:36 ingest raw/papers/palumbo2026formal.pdf → literature/papers/palumbo2026formal.md
+2026-11-14 20:36 ingest raw/web/anthropic.com-claude-code-auto-mode.md → literature/posts/hughes2026claude.md
+2026-11-14 20:36 ingest raw/papers/wang2026longhorizon.pdf → literature/papers/wang2026longhorizon.md
+2026-11-14 20:36 ingest raw/papers/barbaste2026harness.pdf → literature/papers/barbaste2026harness.md
+2026-11-14 20:36 curate 2026-11-13-scaffolding-bitter-lesson.md ingested=11 declined=1 dup=0

@@ -5,6 +5,7 @@ discovered: 2026-11-13
 source: discover
 n_requested: 12
 n_returned: 12
+curated: 2026-11-14
 ---
 
 Triage notes: arXiv abstract pages were fetched for items marked (abs-verified); others are blog/vendor pages read via WebFetch or only seen in search snippets (marked snippet-only). No full PDFs fetched. Ranked by fit to Q2 (capability boundary), Q3 (invariant boundary), Q4 (horizon/drift). Items 5, 6, 7 cut against the thesis.
@@ -92,3 +93,20 @@ Triage notes: arXiv abstract pages were fetched for items marked (abs-verified);
 - type: post
 - summary: Dan McAteer's Latent Space piece argues models keep absorbing harness functions and engineers keep deleting what was absorbed, with an O'Reilly Radar post (https://www.oreilly.com/radar/?p=20067) recommending that each new model release trigger switching off harness components one at a time against your evals, and secondary reports that Manus rewrote its harness five times in six months, each stripping complexity.
 - reason: Gives the operational protocol (per-release ablation) that could be adapted for the project's harness; weakest tier of evidence (snippet-level, secondary, unverified claims such as "80% of the Claude Code system prompt was deleted"), so treat as hypothesis sources only.
+
+## Curation
+
+Curated 2026-11-14 by `/curate` (agency: max). Each item was checked against the full text; per-note discrepancies vs the summaries above are recorded in the literature notes.
+
+- 1. Harness design for long-running apps — ingested → rajasekaran2026harness
+- 2. In-Context Prompting Obsoletes Agent Orchestration (2604.27891) — ingested → dennis2026incontext
+- 3. Role of Scaffolding (2610.22289) — ingested → rodionov2026improving
+- 4. mini-swe-agent + bash-only leaderboard — ingested → SWE-agent-mini-swe-agent
+- 5. Scaffold Effects on GAIA (2606.08529) — ingested → starace2026scaffold
+- 6. Harness Zero (Arize blog) — ingested from the original paper (arXiv 2609.24974) instead of the secondary blog → ye2026harnesszero
+- 7. AI4AI at Test-Time (2608.12307) — ingested → qian2026ai4ai
+- 8. Formal Policy Enforcement (2602.16708) — ingested → palumbo2026formal
+- 9. Claude Code auto mode — ingested → hughes2026claude
+- 10. HORIZON (2604.11978) — ingested → wang2026longhorizon
+- 11. Harness Engineering (2609.00006) — ingested → barbaste2026harness
+- 12. Latent Space / O'Reilly practitioner write-ups — declined — weakest tier: secondary and snippet-level, with unverified claims ("80% of the system prompt deleted"); the per-release ablation protocol is covered from the primary source by rajasekaran2026harness.
