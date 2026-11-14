@@ -2,7 +2,8 @@
 kind: decision
 id: 1
 title: Scope and framing of intent-briefing
-status: accepted
+status: superseded
+superseded_by: 3
 date: "2026-11-13"
 ---
 

@@ -1,3 +1,5 @@
+# ADR 0003: no experiments here, so ceilings/models below apply only to
+# autonomous curation (digest/curate). Kept pinned per ADR 0002.
 # Hard ceilings for autonomous runs. Chain halts when any is hit.
 # Enforcement is between actions: a tripped ceiling stops the NEXT
 # call, never the one in flight, so real spend overshoots the ceiling

@@ -60,3 +60,23 @@ SessionEnd hook backstops this if you forget.
   Fable before reframing.
 - Start sketching the harness task corpus from real claude-system skills
   (redacted).
+
+## 2026-11-14
+
+### Did
+- ADR 0002 (decision-grade evaluation), then ADR 0003, which supersedes it
+  and 0001: **literature and reference only, no in-house experiments.** Both
+  made with Fable.
+- Removed the experiment skill group, the experiment and notebook rules,
+  and `experiments/`. Rewrote the research plan into open questions plus
+  deliverables.
+- Seeded `docs/writing-guide.md`; every line is `[provisional]` until ingest.
+
+### Findings
+- Our own experiments could never have passed `/elevate` Gate 1, so they had
+  no path to the output they existed for.
+
+### Next
+- Overnight curate ingests the 48 candidates. Re-tag guide lines as
+  sources are verified.
+- Author-bias audit lives in a separate private QA repo (manual trigger).

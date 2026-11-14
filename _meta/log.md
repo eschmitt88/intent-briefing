@@ -8,3 +8,4 @@ skills; read by `/lint`.
 2026-11-13 14:26 discover scaffolding-bitter-lesson n=12
 2026-11-13 14:26 discover specificity-prompt-density-capability n=12
 2026-11-14 ADR 0002 decision-grade evaluation (real tasks, cheap probes, Q5 first, models pinned)
+2026-11-14 ADR 0003 literature-only; experiment scaffolding removed; writing guide seeded

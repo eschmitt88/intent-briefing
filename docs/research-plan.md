@@ -11,7 +11,8 @@ the method itself. The military analogue is mission command: the commander's
 intent is given, and the subordinate chooses how to achieve it.
 
 The project's job is to **find where this stops being true**, not to confirm
-it.
+it. It does this by **curating what others have measured**. It runs no
+experiments of its own ([ADR 0003](decisions/0003-literature-and-reference.md)).
 
 ## Two axes, not one dial
 
@@ -22,7 +23,7 @@ it.
 | **intent**     | goal + constraints only      | goal + constraints + rationale + context |
 | **procedure**  | short checklist              | full step-by-step script         |
 
-Experimental conditions sample this 2×2. They do not sample a single
+Sources are read against this 2×2, not against a single
 "prescriptiveness" slider.
 
 ## The asymmetry that matters
@@ -30,54 +31,47 @@ Experimental conditions sample this 2×2. They do not sample a single
 The reader is a peer in **capability** but not in **context**. A subagent or
 fresh session has none of the author's working memory. An intent brief only
 works if that context is actually transferred. Mission command also assumes
-shared doctrine, which here means CLAUDE.md, rules and skills. So doctrine
-availability is a variable to test, not a fixed background.
+shared doctrine, which here means CLAUDE.md, rules and skills. So when reading a
+source, ask whether shared doctrine was available.
 
-## Founding questions
+## Open questions (the literature is watched for these)
 
-> **Order and evaluation method revised by [ADR 0002](decisions/0002-decision-grade-evaluation.md):**
-> Q5 → Q3 → Q1 → Q2; Q4 demoted; Q6 is now a case study. Real tasks only, cheap
-> probes before replays, and a decision-grade promotion gate instead of factorial significance.
+1. **Effect size.** On matched agentic tasks, does an intent brief match or
+   beat a script for a frontier implementer, in outcome quality, tokens and
+   turns? *Gap as of 2026-11-13: no controlled goal-vs-procedure study on
+   agentic tasks.*
+2. **Capability boundary.** At what implementer strength does the ordering
+   flip? *Counter-evidence already in hand: the strongest model gained the
+   most from scaffolding (2606.08529).*
+3. **Invariant boundary.** Which instruction classes must stay explicit (or
+   move to code) no matter how strong the model is?
+4. **Horizon and drift.** Does intent framing drift more or less than a
+   script over long autonomous runs? *Gap: no long-horizon procedure-vs-intent
+   comparison.*
+5. **Author bias.** Do frontier models over-script when they write briefs for
+   peers? *The literature is indirect here (AGENTS.md evaluation 2602.11988).
+   Our own author is audited separately, in a private repo; see ADR 0003.*
 
-1. **Effect size.** On matched tasks, does an intent brief match or beat a
-   script for a frontier implementer? Measure outcome quality, tokens and
-   turns.
-2. **Capability boundary.** At what implementer strength (Haiku, Sonnet, Opus,
-   older vs current) does the ordering flip? Prediction: scripts win below
-   some threshold. Find that threshold.
-3. **Invariant boundary.** Which instruction classes must stay explicit no
-   matter how strong the model is: hard invariants (HCE holdout, paths,
-   schemas), permission and safety limits, irreversible actions?
-   Hypothesis: these belong in code or hooks, not in prose of either style.
-   Test whether intent-only briefs violate them more often.
-4. **Horizon and drift.** Over long chains (`/iterate --chain`, multi-hour
-   max-agency runs), does intent framing drift more or less than a script?
-   Which recovers better when the environment breaks the author's
-   assumptions?
-5. **Author bias.** When a frontier model writes briefs for peers, does it
-   over-script by default? Does a one-line meta-instruction ("brief, don't
-   script") fix that, or just produce vaguer scripts?
-6. **Natural experiment.** Can the 2026-07-31 instruction-ablation program
-   (claude-system skill prose cut from ~18k to ~7k words) be evaluated after
-   the fact, using pre/post skill-failure and re-prompt rates?
+The 2026-07-31 instruction-ablation program is a **qualitative case study**
+motivating Q3, not a natural experiment (ADR 0002).
 
-## Phases
+## Deliverables
 
-1. **Literature** (now). Prompt specificity and over-specification,
-   instruction following vs instruction count, context engineering,
-   delegation and briefing in multi-agent systems, mission-command doctrine,
-   capability-dependent prompting effects, and the Bitter Lesson applied to
-   scaffolding. Outputs: literature notes, concepts, a draft writing guide.
-2. **Harness.** A small task corpus taken from real claude-system work
-   (redacted), with brief variants per task cell, outcome-based scoring, and
-   a held-out task split. Run through `claude -p` with pinned models.
-3. **Experiments.** Q1–Q5 as experiments; Q6 from box telemetry.
-4. **Fold-back.** `/elevate` proposals against claude-system skills, rules,
-   hooks and subagent briefs, citing the July program as their predecessor.
-   A living **writing guide** that future agentic pieces are written against.
+1. **Curated literature** in `literature/` and `concepts/`, kept current by
+   `/digest` and `/curate` under `agency: max`.
+2. **The writing guide**, `docs/writing-guide.md`: how to write system
+   prompts, subagent briefs, skills and hooks for strong models. **Every line
+   is marked with its evidence strength** and cites the notes behind it. This
+   is the live reference claude-system pieces are refined against.
+3. **Fold-back.** Hub `/elevate` proposals against claude-system once the
+   evidence clears its gates. One candidate already named: a regression check
+   on real invocations before a rewritten skill is promoted (engineering
+   practice for claude-system, not research for this repo).
 
-## Evaluation discipline
+## Reading discipline
 
-HCE. Judges are strong models that will tend to *like* intent framing, so
-rubric scores are secondary to task-outcome metrics: tests pass, invariants
-held, artifact correct. Held-out tasks stay untouched during harness tuning.
+Strong-model judges like intent framing, so weight **task-outcome results**
+over rubric or LLM-judge scores. Grade each source by `/elevate`'s evidence
+gates (peer review, released code, independent attestation, credibility).
+Read `~/claude-system/claude/rules/evaluation.md` before judging a source's
+evaluation.

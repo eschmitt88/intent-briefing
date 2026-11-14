@@ -2,7 +2,8 @@
 kind: decision
 id: 2
 title: Decision-grade boundary-finding instead of factorial significance
-status: accepted
+status: superseded
+superseded_by: 3
 date: "2026-11-14"
 ---
 
