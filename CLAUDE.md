@@ -24,10 +24,8 @@ Plan: `docs/research-plan.md`. Deliverable: `docs/writing-guide.md`.
 
 ## Scoped rules
 
-Detailed conventions live in `.claude/rules/` and are auto-loaded when you
-touch matching paths:
-
-@.claude/rules/data.md
+Detailed conventions live in `.claude/rules/`. Each loads on its own when
+you read or edit a matching path (its `paths:` frontmatter).
 
 Framework rules in `~/claude-system/claude/rules/` can't be `@`-imported
 (imports resolve only in-tree): read `evaluation.md` before designing or
