@@ -5,6 +5,7 @@ discovered: 2026-11-13
 source: discover
 n_requested: 12
 n_returned: 12
+curated: 2026-11-14
 ---
 
 Note: summaries come from search-result snippets and secondary write-ups; no page was fully read. Verify before ingest, especially the three 2026 arXiv IDs (items 5, 6, 8), which the search tool surfaced but which were not opened.
@@ -92,3 +93,20 @@ Note: summaries come from search-result snippets and secondary write-ups; no pag
 - type: paper
 - summary: Conceptual framework for delegation covering authority transfer, accountability, role and boundary specification, clarity of intent and trust, mapped onto MCP, A2A and related protocols.
 - reason: The most prominent theory paper tying delegation to intent and boundaries, though reportedly non-empirical; useful as a conceptual anchor and for mission-command-style vocabulary.
+
+## Curation
+
+Curated 2026-11-14 by `/curate` (agency: max). Each item was checked against the full text; per-note discrepancies vs the summaries above are recorded in the literature notes.
+
+- 1. Anthropic multi-agent research system — already in graph (hadfield2025multiagent)
+- 2. Cognition, Don't Build Multi-Agents — ingested → yan2025multiagents
+- 3. LangChain, How and when to build multi-agent systems — ingested → chase2025multiagent
+- 4. MAST (2503.13657) — already in graph (cemri2025why)
+- 5. AgentCollabBench (2605.08647) — ingested → mazumder2026agentcollabbench
+- 6. Information Bottleneck (2607.16133) — ingested → yu2026when
+- 7. Handoff Debt (2606.02875) — ingested → kc2026handoff
+- 8. Facts Without Rules (2608.29028) — ingested → wang2026facts
+- 9. Effective context engineering — ingested → rajasekaran2025effective
+- 10. Writing effective tools for agents — ingested → aizawa2025writing
+- 11. Skill authoring best practices + Agent Skills post — ingested → anthropic2026skill
+- 12. Intelligent AI Delegation (2602.11865) — already in graph (tomasev2026intelligent)

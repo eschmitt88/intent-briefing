@@ -19,3 +19,13 @@ skills; read by `/lint`.
 2026-11-14 20:36 ingest raw/papers/zhu2026sage.pdf → literature/papers/zhu2026sage.md
 2026-11-14 20:36 ingest raw/papers/liu2026espo.pdf → literature/papers/liu2026espo.md
 2026-11-14 20:36 curate 2026-11-13-author-delegation-and-prompt-authorship.md ingested=8 declined=4 dup=0
+2026-11-14 20:36 ingest raw/web/cognition.ai-dont-build-multi-agents.md → literature/posts/yan2025multiagents.md
+2026-11-14 20:36 ingest raw/web/blog.langchain.com-how-and-when-to-build-multi-agent-systems.md → literature/posts/chase2025multiagent.md
+2026-11-14 20:36 ingest raw/papers/mazumder2026agentcollabbench.pdf → literature/papers/mazumder2026agentcollabbench.md
+2026-11-14 20:36 ingest raw/papers/yu2026when.pdf → literature/papers/yu2026when.md
+2026-11-14 20:36 ingest raw/papers/kc2026handoff.pdf → literature/papers/kc2026handoff.md
+2026-11-14 20:36 ingest raw/papers/wang2026facts.pdf → literature/papers/wang2026facts.md
+2026-11-14 20:36 ingest raw/web/anthropic.com-effective-context-engineering-for-ai-agents.md → literature/posts/rajasekaran2025effective.md
+2026-11-14 20:36 ingest raw/web/anthropic.com-writing-tools-for-agents.md → literature/posts/aizawa2025writing.md
+2026-11-14 20:36 ingest raw/web/platform.claude.com-agent-skills-best-practices.md → literature/posts/anthropic2026skill.md
+2026-11-14 20:36 curate 2026-11-13-delegation-subagent-briefing.md ingested=9 declined=0 dup=3
