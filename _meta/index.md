@@ -10,6 +10,8 @@ and `/new-experiment`.
 
 ## Maps of Content
 
+- [[mocs/brief-writing]]: what a brief contains and what prose costs (7 concepts)
+
 (promote a cluster of ≥5 related concepts into `mocs/<theme>.md`)
 
 ## Concepts (seeded 2026-11-14 from the first curate pass)
@@ -24,8 +26,7 @@ and `/new-experiment`.
   [[concepts/durable-structure]], [[concepts/invariants-in-code]]
 - Delegation: [[concepts/handoff-context-loss]]
 
-MoC candidates: brief-writing (≥5 concepts) and harness-structure (3 concepts
-plus links) — see `/promote-moc`.
+MoC candidate not yet ripe: harness-structure (3 core concepts).
 
 ## Active experiments
 
